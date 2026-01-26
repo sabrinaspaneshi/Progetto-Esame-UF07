@@ -10,6 +10,7 @@ export function RecipeCard({ meal }) {
             <div className="card-content">
                 <h3>{meal.strMeal}</h3>
                 {meal.strCategory && <p>Category: {meal.strCategory}</p>}
+                <Link to={`/recipe/${meal.idMeal}`} className="btn">View Full Recipe</Link>
             </div>
         </div>
     )
