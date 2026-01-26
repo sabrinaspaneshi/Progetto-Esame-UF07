@@ -19,6 +19,13 @@ export default function Header({ title }: HeaderProps) {
                     }}>{title}</h2>
                 </div>
             )}
+            <nav className="nav container" style={{ justifyContent: 'center', marginTop: 20 }}>
+                <ul className="nav-links">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/categories">Categories</Link></li>
+                    <li><Link to="/favorites">Favorites</Link></li>
+                </ul>
+            </nav>
         </header>
     );
 }
