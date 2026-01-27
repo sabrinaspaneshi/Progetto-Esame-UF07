@@ -8,4 +8,18 @@ export default function RecipeDetail() {
     const { addToFavorites, removeFromFavorites, isFavorite } = useAppContext();
     const [favoriteMessage, setFavoriteMessage] = useState('');
 
+    const handleToggleFavorite = () => {
+        if (meal) {
+            if (isFavorite(meal.idMeal)) {
+                removeFromFavorites(meal.idMeal);
+                setFavoriteMessage('removed');
+                setTimeout(() => setFavoriteMessage(''), 3000);
+            } else {
+                addToFavorites(meal.idMeal);
+                setFavoriteMessage('success');
+                setTimeout(() => setFavoriteMessage(''), 3000);
+            }
+        }
+    };
+
 }
