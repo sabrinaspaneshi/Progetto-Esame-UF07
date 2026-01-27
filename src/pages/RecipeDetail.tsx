@@ -22,4 +22,9 @@ export default function RecipeDetail() {
         }
     };
 
+    if (isLoading) return <p className="loading">Loading...</p>;
+    if (error) return <p className="error">Error: {error.message}</p>;
+    if (!meal) return <p className="error">Recipe not found</p>;
+
+
 }
