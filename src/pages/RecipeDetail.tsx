@@ -26,5 +26,12 @@ export default function RecipeDetail() {
     if (error) return <p className="error">Error: {error.message}</p>;
     if (!meal) return <p className="error">Recipe not found</p>;
 
-
+    const ingredients: string[] = [];
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}` as keyof Meal] as string;
+        const measure = meal[`strMeasure${i}` as keyof Meal] as string;
+        if (ingredient && ingredient.trim()) {
+            ingredients.push(`${measure} ${ingredient}`.trim());
+        }
+    }
 }
