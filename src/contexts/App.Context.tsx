@@ -20,3 +20,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedIngredient, setSelectedIngredient] = useState('');
+
+  const [favoriteRecipes, setFavoriteRecipes] = useState<string[]>(() => {
+    try {
+      const stored = localStorage.getItem('fav_recipes');
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      console.warn('Errore nel recupero dei preferiti', e);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('fav_recipes', JSON.stringify(favoriteRecipes));
+  }, [favoriteRecipes]);
