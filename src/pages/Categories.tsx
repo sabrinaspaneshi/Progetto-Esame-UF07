@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
+import { useCategories } from '../hooks/useRecipes2'
+import { useAppContext } from '../contexts/App.Context'
 
 export default function Categories() {
     const { data: categories, isLoading, error } = useCategories()

@@ -11,6 +11,8 @@ type AppContextType = {
   setSelectedIngredient: (v: string) => void;
   toggleFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
+  addToFavorites: (id: string) => void;
+  removeFromFavorites: (id: string) => void;
 };
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -36,12 +38,23 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('fav_recipes', JSON.stringify(favoriteRecipes));
   }, [favoriteRecipes]);
 
+
   const toggleFavorite = (id: string) => {
     setFavoriteRecipes(favs =>
       favs.includes(id)
         ? favs.filter(f => f !== id)
         : [...favs, id]
     );
+  };
+
+  const addToFavorites = (id: string) => {
+    setFavoriteRecipes(favs =>
+      favs.includes(id) ? favs : [...favs, id]
+    );
+  };
+
+  const removeFromFavorites = (id: string) => {
+    setFavoriteRecipes(favs => favs.filter(f => f !== id));
   };
 
   const isFavorite = (id: string) => favoriteRecipes.includes(id);
@@ -59,6 +72,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         setSelectedIngredient,
         toggleFavorite,
         isFavorite,
+        addToFavorites,
+        removeFromFavorites,
       }}
     >
       {children}

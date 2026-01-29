@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useAreas, useIngredients } from '../hooks/useRecipes2'
+import { useAppContext } from '../contexts/App.Context'
 
 
 export default function SearchFilters() {
@@ -11,11 +13,8 @@ export default function SearchFilters() {
     useEffect(() => { setSelectedArea(contextArea) }, [contextArea])
     useEffect(() => { setSelectedIngredient(contextIngredient) }, [contextIngredient])
 
-    const handleAreaChange = (a) => { setSelectedArea(a); setContextArea(a) }
-    const handleIngredientChange = (i) => { setSelectedIngredient(i); setContextIngredient(i) }
-
-    const handleAreaChange = (a) => { setSelectedArea(a); setContextArea(a) }
-    const handleIngredientChange = (i) => { setSelectedIngredient(i); setContextIngredient(i) }
+    const handleAreaChange = (a: string) => { setSelectedArea(a); setContextArea(a) }
+    const handleIngredientChange = (i: string) => { setSelectedIngredient(i); setContextIngredient(i) }
     const clearFilters = () => { setSelectedArea(''); setSelectedIngredient(''); setContextArea(''); setContextIngredient('') }
 
     return (

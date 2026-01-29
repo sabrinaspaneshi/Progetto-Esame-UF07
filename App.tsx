@@ -1,11 +1,13 @@
+
 import { Routes, Route } from 'react-router-dom';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import RecipeDetail from './pages/RecipeDetail';
-import Categories from './pages/Categories';
-import CategoryDetail from './pages/CategoryDetail';
-import Favorites from './pages/Favorites';
-import NotFound from './pages/NotFound';
+
+import Footer from './src/components/Footer';
+import Home from './src/pages/Home';
+import RecipeDetail from './src/pages/RecipeDetail';
+import Categories from './src/pages/Categories';
+import CategoryDetail from './src/pages/CategoryDetail';
+import Favorites from './src/pages/Favorites';
+import NotFound from './src/pages/NotFound';
 
 
 

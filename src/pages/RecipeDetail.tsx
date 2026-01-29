@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useMeal } from '../hooks/useRecipes2';
+import { useAppContext } from '../contexts/App.Context';
+import type { Meal } from '../types/recipe';
 
 
 export default function RecipeDetail() {

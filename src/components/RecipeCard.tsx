@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { useAppContext } from '../contexts/AppContext'
+import { useAppContext } from '../contexts/App.Context'
+import type { Meal, MealSummary } from '../types/recipe'
 
-export function RecipeCard({ meal }) {
+export function RecipeCard({ meal }: { meal: Meal | MealSummary }) {
     const { isFavorite } = useAppContext()
     const favorite = isFavorite(meal.idMeal)
     return (

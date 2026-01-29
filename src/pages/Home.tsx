@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import { RecipeCard } from '../components/RecipeCard'
 import SearchFilters from '../components/SearchFilters'
-import { useSearchMeals, useRandomRecipes, useMealsByArea, useMealsByIngredient } from '../hooks/useRecipes'
-import { useAppContext } from '../contexts/AppContext'
+import { useSearchMeals, useRandomRecipes, useMealsByArea, useMealsByIngredient } from '../hooks/useRecipes2'
+import { useAppContext } from '../contexts/App.Context'
 
 export default function Home() {
     const [query, setQuery] = useState('')

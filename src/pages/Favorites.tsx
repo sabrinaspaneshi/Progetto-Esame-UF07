@@ -1,9 +1,11 @@
 import { useParams, Link } from 'react-router-dom'
 import Header from '../components/Header'
+import { useMealsByCategory } from '../hooks/useRecipes2'
+import { RecipeCard } from '../components/RecipeCard'
 
 export default function CategoryDetail() {
     const { category } = useParams()
-    const { data: meals, isLoading, error } = useMealsByCategory(category)
+    const { data: meals, isLoading, error } = useMealsByCategory(category || '')
 
     if (isLoading || error) {
         return (
@@ -20,13 +22,13 @@ export default function CategoryDetail() {
             <main className="container">
                 <header className="page-header">
                     <Link title="Back" to="/categories" className="btn-back">
-                        ← Back
+                        Back
                     </Link>
                     <h1>{category} Recipes</h1>
                 </header>
 
                 <section className="recipes-grid">
-                    {meals?.length > 0 ? (
+                    {meals && meals.length > 0 ? (
                         meals.map(meal => <RecipeCard key={meal.idMeal} meal={meal} />)
                     ) : (
                         <p>No recipes found.</p>
