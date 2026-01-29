@@ -21,6 +21,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedIngredient, setSelectedIngredient] = useState('');
 
+  // preferiti salvati in locale, così non spariscono a ogni refresh
   const [favoriteRecipes, setFavoriteRecipes] = useState<string[]>(() => {
     try {
       const stored = localStorage.getItem('fav_recipes');
@@ -63,4 +64,16 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </AppContext.Provider>
   );
+};
+
+export const useAppContext = () => {
+  const context = useContext(AppContext);
+
+  if (!context) {
+    throw new Error(
+      'useAppContext usato fuori da AppProvider'
+    );
+  }
+
+  return context;
 };
