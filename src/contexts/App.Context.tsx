@@ -34,3 +34,33 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     localStorage.setItem('fav_recipes', JSON.stringify(favoriteRecipes));
   }, [favoriteRecipes]);
+
+  const toggleFavorite = (id: string) => {
+    setFavoriteRecipes(favs =>
+      favs.includes(id)
+        ? favs.filter(f => f !== id)
+        : [...favs, id]
+    );
+  };
+
+  const isFavorite = (id: string) => favoriteRecipes.includes(id);
+
+  return (
+    <AppContext.Provider
+      value={{
+        searchQuery,
+        setSearchQuery,
+        selectedCategory,
+        setSelectedCategory,
+        selectedArea,
+        setSelectedArea,
+        selectedIngredient,
+        setSelectedIngredient,
+        toggleFavorite,
+        isFavorite,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
